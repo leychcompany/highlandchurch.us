@@ -1,6 +1,6 @@
 import Image from "next/image";
+import { HomeHero } from "@/components/home/HomeHero";
 import { Button } from "@/components/ui/Button";
-import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { homeServices } from "@/lib/content";
@@ -9,37 +9,7 @@ import { siteConfig } from "@/lib/site";
 export default function HomePage() {
   return (
     <>
-      <PageHero
-        title="Love Jesus, Live like Jesus, Lead others to Jesus."
-        subtitle="Join us every Sunday @ 10am & 5pm"
-        image="/images/highland-church-mountain.jpg"
-      />
-
-      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
-        <SectionHeading title="Watch our latest sermon" />
-        <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl shadow-lg">
-          <div className="relative aspect-video w-full">
-            <iframe
-              src={`https://www.youtube.com/embed/${siteConfig.latestSermonVideoId}`}
-              title="Latest sermon"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 h-full w-full"
-            />
-          </div>
-        </div>
-        <p className="mt-6 text-center text-neutral-600">
-          Check Out Our High Pursuit Podcast –{" "}
-          <a
-            href={siteConfig.spotifyPodcast}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-black underline underline-offset-4 hover:text-neutral-700"
-          >
-            Click Here
-          </a>
-        </p>
-      </section>
+      <HomeHero />
 
       <section className="bg-white px-4 py-16 md:px-6 md:py-20">
         <div className="mx-auto max-w-7xl">
