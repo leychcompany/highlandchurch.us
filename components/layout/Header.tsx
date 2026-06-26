@@ -48,7 +48,7 @@ export function Header() {
             width={200}
             height={54}
             className={`h-9 w-auto transition-[filter] duration-300 md:h-11 ${
-              solidHeader ? "invert" : ""
+              solidHeader ? "" : "brightness-0 invert"
             }`}
             priority
           />
