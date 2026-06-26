@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { mainNav } from "@/lib/site";
 
 export function Header() {
@@ -11,30 +11,45 @@ export function Header() {
   const isHome = pathname === "/";
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const navItems = mainNav.filter((item) => item.label !== "Give");
   const giveItem = mainNav.find((item) => item.label === "Give");
+  const solidHeader = !isHome || scrolled;
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(false);
+      return;
+    }
+
+    const onScroll = () => setScrolled(window.scrollY > 24);
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
 
   return (
     <header
-      className={
-        isHome
-          ? "absolute inset-x-0 top-0 z-50"
-          : "sticky top-0 z-50 border-b border-neutral-200/80 bg-white/95 backdrop-blur"
-      }
+      className={`z-50 transition-colors duration-300 ${
+        isHome ? "fixed inset-x-0 top-0" : "sticky top-0"
+      } ${
+        solidHeader
+          ? "border-b border-neutral-200/80 bg-white/95 backdrop-blur"
+          : "bg-transparent"
+      }`}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-4 md:px-8">
         <Link href="/" className="shrink-0">
           <Image
-            src={
-              isHome
-                ? "/images/highlandchurch_logo-white.png"
-                : "/images/highlandchurch_logo.png"
-            }
+            src="/images/highlandchurch_logo-white.png"
             alt="Highland Church"
-            width={isHome ? 200 : 180}
-            height={isHome ? 54 : 49}
-            className={isHome ? "h-9 w-auto md:h-11" : "h-10 w-auto md:h-12"}
+            width={200}
+            height={54}
+            className={`h-9 w-auto transition-[filter] duration-300 md:h-11 ${
+              solidHeader ? "invert" : ""
+            }`}
             priority
           />
         </Link>
@@ -50,7 +65,7 @@ export function Header() {
               >
                 <button
                   type="button"
-                  className={navLinkClass(isHome)}
+                  className={navLinkClass(solidHeader)}
                   onClick={() => setDropdownOpen((v) => !v)}
                 >
                   {item.label}
@@ -72,7 +87,7 @@ export function Header() {
               <NavLink
                 key={item.label}
                 item={item}
-                className={navLinkClass(isHome)}
+                className={navLinkClass(solidHeader)}
               />
             ),
           )}
@@ -90,9 +105,9 @@ export function Header() {
           <button
             type="button"
             className={
-              isHome
-                ? "rounded-md border border-white/40 px-3 py-2 text-sm font-medium text-white lg:hidden"
-                : "rounded-lg border border-neutral-300 px-3 py-2 text-sm font-medium lg:hidden"
+              solidHeader
+                ? "rounded-lg border border-neutral-300 px-3 py-2 text-sm font-medium text-neutral-700 lg:hidden"
+                : "rounded-md border border-white/40 px-3 py-2 text-sm font-medium text-white lg:hidden"
             }
             onClick={() => setMobileOpen((v) => !v)}
             aria-expanded={mobileOpen}
@@ -106,9 +121,9 @@ export function Header() {
       {mobileOpen && (
         <div
           className={
-            isHome
-              ? "border-t border-white/20 bg-black/80 px-4 py-4 backdrop-blur lg:hidden"
-              : "border-t border-neutral-200 bg-white px-4 py-4 lg:hidden"
+            solidHeader
+              ? "border-t border-neutral-200 bg-white px-4 py-4 lg:hidden"
+              : "border-t border-white/20 bg-black/80 px-4 py-4 backdrop-blur lg:hidden"
           }
         >
           <nav className="flex flex-col gap-1">
@@ -118,11 +133,7 @@ export function Header() {
                     <NavLink
                       key={child.label}
                       item={child}
-                      className={
-                        isHome
-                          ? "rounded-lg px-3 py-2 text-sm font-medium text-white"
-                          : "rounded-lg px-3 py-2 text-sm font-medium text-neutral-700"
-                      }
+                      className={mobileNavLinkClass(solidHeader)}
                       onClick={() => setMobileOpen(false)}
                     />
                   ))
@@ -130,11 +141,7 @@ export function Header() {
                     <NavLink
                       key={item.label}
                       item={item}
-                      className={
-                        isHome
-                          ? "rounded-lg px-3 py-2 text-sm font-medium text-white"
-                          : "rounded-lg px-3 py-2 text-sm font-medium text-neutral-700"
-                      }
+                      className={mobileNavLinkClass(solidHeader)}
                       onClick={() => setMobileOpen(false)}
                     />,
                   ],
@@ -155,10 +162,16 @@ export function Header() {
   );
 }
 
-function navLinkClass(isHome: boolean) {
-  return isHome
-    ? "rounded-lg px-3 py-2 text-sm font-medium text-white transition hover:text-white/80"
-    : "rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 transition hover:bg-cream hover:text-black";
+function navLinkClass(solidHeader: boolean) {
+  return solidHeader
+    ? "rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 transition hover:bg-cream hover:text-black"
+    : "rounded-lg px-3 py-2 text-sm font-medium text-white transition hover:text-white/80";
+}
+
+function mobileNavLinkClass(solidHeader: boolean) {
+  return solidHeader
+    ? "rounded-lg px-3 py-2 text-sm font-medium text-neutral-700"
+    : "rounded-lg px-3 py-2 text-sm font-medium text-white";
 }
 
 function NavLink({

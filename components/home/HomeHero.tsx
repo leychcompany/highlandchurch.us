@@ -20,7 +20,7 @@ export function HomeHero() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/70" />
 
         <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-4 pb-36 pt-28 md:px-8 md:pb-44 md:pt-32">
           <div className="max-w-2xl">

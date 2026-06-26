@@ -1,25 +1,11 @@
-"use client";
-
-import { useEffect } from "react";
-
 export function ChurchCenterCalendar() {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://highlnd.churchcenter.com/assets/calendar_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, []);
-
   return (
-    <div
-      className="church-center-calendar mx-auto max-w-5xl overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm"
-      data-height="600px"
+    <iframe
+      src="https://highlnd.churchcenter.com/calendar?embed=true&view=month"
+      title="Highland Church events calendar"
+      className="mx-auto block w-full max-w-5xl overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm"
+      style={{ height: "600px", border: "none" }}
+      loading="lazy"
     />
   );
 }
