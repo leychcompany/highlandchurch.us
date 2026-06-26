@@ -43,12 +43,12 @@ export function Header() {
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-4 md:px-8">
         <Link href="/" className="shrink-0">
           <Image
-            src="/images/highlandchurch_logo-white.png"
+            src="/images/highlandchurch_logo.webp"
             alt="Highland Church"
             width={200}
             height={54}
             className={`h-9 w-auto transition-[filter] duration-300 md:h-11 ${
-              solidHeader ? "" : "brightness-0 invert"
+              solidHeader ? "brightness-0" : ""
             }`}
             priority
           />

@@ -7,7 +7,8 @@ export const siteConfig = {
   email: "hello@highlandchurch.us",
   treasurerEmail: "treasurer@highlandchurch.us",
   serviceTimes: "Sundays @ 10am & 5pm",
-  youtubeChannelId: "UCNDqfUXZ1SdPPXtpM1kig",
+  youtubeChannelId: "UCNDq_fUX-Z1SdPPXtpM1kig",
+  youtubeHandle: "https://www.youtube.com/@highlandchurch2926",
   spotifyPodcast:
     "https://open.spotify.com/show/1NcuM6Xy65UBNqRVVEYd2Y",
   latestSermonVideoId: "EapWsfVbLvc",

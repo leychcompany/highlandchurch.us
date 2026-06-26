@@ -48,6 +48,52 @@ const curriculum = [
   "Missionally Minded",
 ];
 
+const faqs: {
+  question: string;
+  answer?: string;
+  intro?: string;
+  list?: string[];
+}[] = [
+  {
+    question: "What about check in?",
+    answer:
+      "You'll find our team ready to greet you at check in! Check in begins 30 minutes before each service and check out lasts for 15 minutes following service end.",
+  },
+  {
+    question: "Are your Kid Leaders background checked?",
+    answer:
+      "Yes. Regardless of the role they play, every adult who serves in our Highland Kids area has passed a background check. We prohibit any adult from being alone with a child.",
+  },
+  {
+    question: "What is your security policy?",
+    answer:
+      "Our Highland Kids area is a completely secured space. Upon checking in your child, you will receive a parent/guardian tag that permits you to enter the kids area. This tag includes a unique code, randomly assigned to you at check in for that particular day. Only the parent/guardian who drops your child off AND has this pickup tag, is permitted to pick up the child. If the parent or guardian chooses to hand this pickup tag to someone else, they will be permitted to pick up the child, so long as the secure code on the child's name tag and parent/guardian pickup tag match.",
+  },
+  {
+    question: "What is your sick-child policy?",
+    intro: "Please don't check in kids if:",
+    list: [
+      "They are experiencing any Covid-19 symptoms",
+      "They have had a fever above 99° (without medicine) within the last 24 hours",
+      "They have had diarrhea within the last 24 hours",
+      "They have vomited within the last 24 hours",
+      "They have green discharge from nose",
+      "They have pink eye",
+      "They have a persistent, deep-sounding cough",
+      "They have Strep Throat (child should have started antibiotics more than 24 hours before attending)",
+      "They have a contagious disease (flu, measles, rubella, mumps, whooping cough, meningitis)",
+      "They have any open and/or weeping sores or wounds",
+      "They have any unexplained and/or contagious rash (chicken pox, boils, ringworm, Hand Foot Mouth, impetigo)",
+      "They have lice or scabies",
+    ],
+  },
+  {
+    question: "My child is nervous, can I stay in their classroom?",
+    answer:
+      "Because our Highland Kids area is a secure area, only our background checked team members are permitted in the classrooms. We have an experienced team and many leaders who are capable of making sure each child is well cared for. If your child needs your attention, we will contact you via text message.",
+  },
+];
+
 export default function KidsMinistryPage() {
   return (
     <>
@@ -114,28 +160,37 @@ export default function KidsMinistryPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl space-y-6 px-4 py-16 text-sm leading-relaxed text-neutral-600 md:px-6">
-        <p>
-          You&apos;ll find our team ready to greet you at check in! Check in
-          begins 30 minutes before each service and check out lasts for 15
-          minutes following service end.
-        </p>
-        <p>
-          Our Highland Kids area is a completely secured space. Upon checking in
-          your child, you will receive a parent/guardian tag that permits you to
-          enter the kids area. This tag includes a unique code, randomly assigned
-          to you at check in for that particular day.
-        </p>
-        <p>
-          Because our Highland Kids area is a secure area, only our background
-          checked team members are permitted in the classrooms. If your child
-          needs your attention, we will contact you via text message.
-        </p>
-        <p>
-          Yes. Regardless of the role they play, every adult who serves in our
-          Highland Kids area has passed a background check. We prohibit any
-          adult from being alone with a child.
-        </p>
+      <section className="mx-auto max-w-5xl px-4 py-16 md:px-6">
+        <h2 className="mb-10 text-center text-3xl font-semibold">FAQ</h2>
+        <div className="grid gap-x-12 gap-y-10 md:grid-cols-2">
+          {faqs.map((faq) => (
+            <div key={faq.question}>
+              <h3 className="text-lg font-semibold text-black">
+                {faq.question}
+              </h3>
+              {faq.answer && (
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+                  {faq.answer}
+                </p>
+              )}
+              {faq.intro && (
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+                  {faq.intro}
+                </p>
+              )}
+              {faq.list && (
+                <ul className="mt-2 space-y-1 text-sm leading-relaxed text-neutral-600">
+                  {faq.list.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span aria-hidden>—</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
       </section>
     </>
   );

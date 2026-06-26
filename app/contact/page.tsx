@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactForm } from "@/components/contact/ContactForm";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -20,55 +21,7 @@ export default function ContactPage() {
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:px-6">
-        <form
-          action={`mailto:${siteConfig.email}`}
-          method="post"
-          encType="text/plain"
-          className="space-y-6 rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm"
-        >
-          <div>
-            <label htmlFor="name" className="mb-2 block text-sm font-medium">
-              Name
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-sm outline-none focus:border-black"
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="mb-2 block text-sm font-medium">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-sm outline-none focus:border-black"
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="mb-2 block text-sm font-medium">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              required
-              className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-sm outline-none focus:border-black"
-            />
-          </div>
-          <button
-            type="submit"
-            className="rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-neutral-800"
-          >
-            Send message
-          </button>
-        </form>
+        <ContactForm />
 
         <div className="space-y-10">
           <div className="rounded-2xl border border-neutral-200 bg-white p-8">
