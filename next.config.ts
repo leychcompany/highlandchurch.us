@@ -1,28 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    inlineCss: true,
+  },
   images: {
+    qualities: [55, 65, 75],
     remotePatterns: [
       {
         protocol: "https",
         hostname: "highlandchurch.us",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+        pathname: "/vi/**",
+      },
     ],
-  },
-  turbopack: {
-    resolveAlias: {
-      "../build/polyfills/polyfill-module": "./lib/modern-polyfill.js",
-      "next/dist/build/polyfills/polyfill-module": "./lib/modern-polyfill.js",
-    },
-  },
-  webpack(config) {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "../build/polyfills/polyfill-module": false,
-      "next/dist/build/polyfills/polyfill-module": false,
-    };
-    return config;
   },
   async redirects() {
     return [
@@ -30,19 +25,6 @@ const nextConfig: NextConfig = {
         source: "/prayer-2",
         destination: "/prayer",
         permanent: true,
-      },
-    ];
-  },
-  async headers() {
-    return [
-      {
-        source: "/_next/static/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
       },
     ];
   },

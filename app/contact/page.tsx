@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { LazyGoogleMap } from "@/components/ui/LazyGoogleMap";
+import { MapPreview } from "@/components/ui/MapPreview";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -72,10 +72,7 @@ export default function ContactPage() {
           </div>
 
           <div className="overflow-hidden rounded-2xl shadow-sm">
-            <LazyGoogleMap
-              embedUrl={siteConfig.mapsEmbedUrl}
-              title="Highland Church location"
-            />
+            <MapPreview />
           </div>
         </div>
       </section>

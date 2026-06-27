@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LazyYouTubeEmbed } from "@/components/ui/LazyYouTubeEmbed";
+import { YouTubePreview } from "@/components/ui/YouTubePreview";
 import type { YouTubeVideo } from "@/lib/youtube";
 
 function formatDate(iso: string): string {
@@ -38,15 +38,12 @@ export function MessagesList({ videos }: { videos: YouTubeVideo[] }) {
   return (
     <div>
       <div className="mx-auto max-w-4xl">
-        <div className="overflow-hidden rounded-2xl shadow-lg">
-          <div className="relative aspect-video w-full">
-            <LazyYouTubeEmbed
-              key={active.id}
-              videoId={active.id}
-              title={active.title}
-            />
-          </div>
-        </div>
+        <YouTubePreview
+          key={active.id}
+          videoId={active.id}
+          title={active.title}
+          thumbnail={active.thumbnail}
+        />
         <h2 className="mt-5 text-xl font-semibold">{active.title}</h2>
         <p className="mt-1 text-sm text-neutral-500">
           {formatDate(active.published)}
@@ -58,7 +55,7 @@ export function MessagesList({ videos }: { videos: YouTubeVideo[] }) {
       </h3>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {videos.map((video) => {
-          const isActive = video.id === active.id;
+          const isActive = video.id === activeId;
           return (
             <button
               key={video.id}

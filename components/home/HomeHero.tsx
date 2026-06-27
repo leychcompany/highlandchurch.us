@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { LazyYouTubeEmbed } from "@/components/ui/LazyYouTubeEmbed";
 import { Button } from "@/components/ui/Button";
+import { YouTubePreview } from "@/components/ui/YouTubePreview";
 import { churchCenter, siteConfig } from "@/lib/site";
 
 export function HomeHero() {
@@ -15,7 +15,7 @@ export function HomeHero() {
           className="object-cover object-[48%_80%]"
           preload
           fetchPriority="high"
-          quality={65}
+          quality={55}
           sizes="100vw"
         />
         {/* Warm forest-tinted gradient for contrast + earthy mood */}
@@ -83,14 +83,11 @@ export function HomeHero() {
                 </Link>
               </div>
             </div>
-            <div className="overflow-hidden rounded-2xl bg-neutral-100">
-              <div className="relative aspect-video w-full">
-                <LazyYouTubeEmbed
-                  videoId={siteConfig.latestSermonVideoId}
-                  title="Latest sermon"
-                />
-              </div>
-            </div>
+            <YouTubePreview
+              videoId={siteConfig.latestSermonVideoId}
+              title="Latest sermon"
+              className="relative block aspect-video overflow-hidden rounded-2xl bg-neutral-900"
+            />
           </div>
         </div>
       </div>

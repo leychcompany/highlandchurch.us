@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { HomeHero } from "@/components/home/HomeHero";
 import { Button } from "@/components/ui/Button";
-import { LazyGoogleMap } from "@/components/ui/LazyGoogleMap";
+import { MapPreview } from "@/components/ui/MapPreview";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { homeServices } from "@/lib/content";
@@ -99,7 +99,7 @@ export default function HomePage() {
           </p>
           <div className="mt-9">
             <Button href="/what-we-believe" variant="light">
-              Explore Our Beliefs
+              Read what we believe
             </Button>
           </div>
         </div>
@@ -142,11 +142,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(40,48,31,0.12)]">
-            <LazyGoogleMap
-              embedUrl={siteConfig.mapsEmbedUrl}
-              title="Highland Church location"
-              className="aspect-square w-full md:aspect-[4/5]"
-            />
+            <MapPreview className="aspect-square w-full md:aspect-[4/5]" />
           </div>
         </div>
       </section>
