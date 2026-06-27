@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { LazyGoogleMap } from "@/components/ui/LazyGoogleMap";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -71,13 +72,9 @@ export default function ContactPage() {
           </div>
 
           <div className="overflow-hidden rounded-2xl shadow-sm">
-            <iframe
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBAM2o7PiQqwk15LC1XRH2e_KJ-jUa7KYk&zoom=16&maptype=roadmap&q=2926+Big+Horn+Avenue%2C+Cody"
+            <LazyGoogleMap
+              embedUrl={siteConfig.mapsEmbedUrl}
               title="Highland Church location"
-              className="aspect-video w-full border-0"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </div>

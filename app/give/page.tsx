@@ -23,11 +23,13 @@ export default function GivePage() {
       {/* Hero */}
       <section className="relative flex min-h-[60vh] items-end overflow-hidden">
         <Image
-          src="/images/highland-church-mountain.jpg"
+          src="/images/highland-church-mountain.webp"
           alt="Mountains near Cody, Wyoming"
           fill
           className="object-cover object-[48%_70%]"
-          priority
+          preload
+          fetchPriority="high"
+          quality={65}
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/55 to-forest/30" />

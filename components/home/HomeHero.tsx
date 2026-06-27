@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LazyYouTubeEmbed } from "@/components/ui/LazyYouTubeEmbed";
 import { Button } from "@/components/ui/Button";
 import { churchCenter, siteConfig } from "@/lib/site";
 
@@ -8,11 +9,13 @@ export function HomeHero() {
     <section className="relative bg-cream">
       <div className="relative min-h-[88vh]">
         <Image
-          src="/images/highland-church-mountain.jpg"
+          src="/images/highland-church-mountain.webp"
           alt="Mountains near Cody, Wyoming"
           fill
           className="object-cover object-[48%_80%]"
-          priority
+          preload
+          fetchPriority="high"
+          quality={65}
           sizes="100vw"
         />
         {/* Warm forest-tinted gradient for contrast + earthy mood */}
@@ -82,12 +85,9 @@ export function HomeHero() {
             </div>
             <div className="overflow-hidden rounded-2xl bg-neutral-100">
               <div className="relative aspect-video w-full">
-                <iframe
-                  src={`https://www.youtube.com/embed/${siteConfig.latestSermonVideoId}`}
+                <LazyYouTubeEmbed
+                  videoId={siteConfig.latestSermonVideoId}
                   title="Latest sermon"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full"
                 />
               </div>
             </div>

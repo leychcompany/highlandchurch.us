@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LazyYouTubeEmbed } from "@/components/ui/LazyYouTubeEmbed";
 import type { YouTubeVideo } from "@/lib/youtube";
 
 function formatDate(iso: string): string {
@@ -39,13 +40,10 @@ export function MessagesList({ videos }: { videos: YouTubeVideo[] }) {
       <div className="mx-auto max-w-4xl">
         <div className="overflow-hidden rounded-2xl shadow-lg">
           <div className="relative aspect-video w-full">
-            <iframe
+            <LazyYouTubeEmbed
               key={active.id}
-              src={`https://www.youtube.com/embed/${active.id}`}
+              videoId={active.id}
               title={active.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 h-full w-full"
             />
           </div>
         </div>

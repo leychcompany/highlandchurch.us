@@ -17,7 +17,8 @@ export default function PrayerPage() {
           alt="Highland Church gathered in worship"
           fill
           className="object-cover object-center"
-          priority
+          preload
+          fetchPriority="high"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/55 to-forest/30" />

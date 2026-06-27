@@ -27,7 +27,8 @@ export function PageHero({
           alt=""
           fill
           className="object-cover"
-          priority
+          preload
+          fetchPriority="high"
           sizes="100vw"
         />
         {overlay && <div className="absolute inset-0 bg-black/45" />}

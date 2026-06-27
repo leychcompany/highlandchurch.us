@@ -14,6 +14,10 @@ export const siteConfig = {
   spotifyPodcast:
     "https://open.spotify.com/show/1NcuM6Xy65UBNqRVVEYd2Y",
   latestSermonVideoId: "EapWsfVbLvc",
+  mapsEmbedUrl:
+    "https://www.google.com/maps/embed/v1/place?key=AIzaSyBAM2o7PiQqwk15LC1XRH2e_KJ-jUa7KYk&zoom=16&maptype=roadmap&q=2926+Big+Horn+Avenue%2C+Cody",
+  mapsDirectionsUrl:
+    "https://www.google.com/maps/dir/?api=1&destination=2926+Big+Horn+Avenue%2C+Cody%2C+WY+82414",
 };
 
 export const churchCenter = {

@@ -51,7 +51,6 @@ export function Header() {
             className={`h-9 w-auto transition-[filter] duration-300 md:h-11 ${
               solidHeader ? "brightness-0" : ""
             }`}
-            priority
           />
         </Link>
 

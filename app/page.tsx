@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { HomeHero } from "@/components/home/HomeHero";
 import { Button } from "@/components/ui/Button";
+import { LazyGoogleMap } from "@/components/ui/LazyGoogleMap";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { homeServices } from "@/lib/content";
@@ -34,10 +35,11 @@ export default function HomePage() {
           <div className="grid grid-cols-2 gap-4">
             <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
               <Image
-                src="/images/medicine-bow-mountains-and-a-lake-landscape-15088317-683x1024.jpg"
+                src="/images/medicine-bow.webp"
                 alt="Wyoming landscape"
                 fill
                 className="object-cover"
+                quality={60}
                 sizes="(max-width: 1024px) 50vw, 300px"
               />
             </div>
@@ -47,6 +49,7 @@ export default function HomePage() {
                 alt="Hands lifted in worship"
                 fill
                 className="object-cover"
+                quality={60}
                 sizes="(max-width: 1024px) 50vw, 300px"
               />
             </div>
@@ -72,10 +75,11 @@ export default function HomePage() {
       {/* What we believe — dark forest band */}
       <section className="relative overflow-hidden px-5 py-24 md:px-8 md:py-32">
         <Image
-          src="/images/highland-church-mountain.jpg"
+          src="/images/highland-church-mountain.webp"
           alt=""
           fill
           className="object-cover object-center"
+          quality={60}
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-forest/90" />
@@ -138,13 +142,10 @@ export default function HomePage() {
             </div>
           </div>
           <div className="overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(40,48,31,0.12)]">
-            <iframe
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBAM2o7PiQqwk15LC1XRH2e_KJ-jUa7KYk&zoom=16&maptype=roadmap&q=2926+Big+Horn+Avenue%2C+Cody"
+            <LazyGoogleMap
+              embedUrl={siteConfig.mapsEmbedUrl}
               title="Highland Church location"
-              className="aspect-square w-full border-0 md:aspect-[4/5]"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              className="aspect-square w-full md:aspect-[4/5]"
             />
           </div>
         </div>
