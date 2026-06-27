@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/prayer-2",
+        destination: "/prayer",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

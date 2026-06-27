@@ -3,9 +3,17 @@ import Link from "next/link";
 type ButtonProps = {
   href: string;
   children: React.ReactNode;
-  variant?: "primary" | "outline";
+  variant?: "primary" | "outline" | "light" | "clay";
   external?: boolean;
   className?: string;
+};
+
+const variantStyles: Record<NonNullable<ButtonProps["variant"]>, string> = {
+  primary: "bg-pine text-cream hover:bg-forest",
+  outline:
+    "border border-pine/40 text-pine hover:border-pine hover:bg-pine hover:text-cream",
+  light: "bg-cream text-forest hover:bg-sage hover:text-forest",
+  clay: "bg-clay text-cream hover:bg-clay/85",
 };
 
 export function Button({
@@ -16,11 +24,8 @@ export function Button({
   className = "",
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-colors";
-  const styles =
-    variant === "primary"
-      ? "bg-black text-white hover:bg-neutral-800"
-      : "border border-neutral-400 text-neutral-700 hover:border-black hover:text-black";
+    "inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-medium tracking-wide transition-colors";
+  const styles = variantStyles[variant];
 
   const classes = `${base} ${styles} ${className}`;
 

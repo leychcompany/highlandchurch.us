@@ -9,9 +9,9 @@ type ServiceCardProps = {
 
 export function ServiceCard({ title, description, cta, href }: ServiceCardProps) {
   return (
-    <article className="flex h-full flex-col rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition hover:shadow-md">
-      <h3 className="text-lg font-semibold text-black">{title}</h3>
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral-600">
+    <article className="flex h-full flex-col rounded-2xl border border-sand bg-cream/60 p-7 transition hover:border-sage hover:bg-white hover:shadow-[0_12px_30px_rgba(40,48,31,0.08)]">
+      <h3 className="font-display text-xl font-semibold text-forest">{title}</h3>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal/70">
         {description}
       </p>
       {cta && href && (

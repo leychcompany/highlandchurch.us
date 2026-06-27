@@ -8,17 +8,18 @@ import { mainNav } from "@/lib/site";
 
 export function Header() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const transparentRoutes = ["/", "/youth"];
+  const isTransparent = transparentRoutes.includes(pathname);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const navItems = mainNav.filter((item) => item.label !== "Give");
   const giveItem = mainNav.find((item) => item.label === "Give");
-  const solidHeader = !isHome || scrolled;
+  const solidHeader = !isTransparent || scrolled;
 
   useEffect(() => {
-    if (!isHome) {
+    if (!isTransparent) {
       setScrolled(false);
       return;
     }
@@ -28,15 +29,15 @@ export function Header() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
+  }, [isTransparent]);
 
   return (
     <header
       className={`z-50 transition-colors duration-300 ${
-        isHome ? "fixed inset-x-0 top-0" : "sticky top-0"
+        isTransparent ? "fixed inset-x-0 top-0" : "sticky top-0"
       } ${
         solidHeader
-          ? "border-b border-neutral-200/80 bg-white/95 backdrop-blur"
+          ? "border-b border-sand bg-cream/95 backdrop-blur"
           : "bg-transparent"
       }`}
     >
@@ -72,12 +73,12 @@ export function Header() {
                   <span className="ml-1 text-xs">▾</span>
                 </button>
                 {dropdownOpen && (
-                  <div className="absolute left-0 top-full min-w-52 rounded-xl border border-neutral-200 bg-white py-2 shadow-lg">
+                  <div className="absolute left-0 top-full min-w-52 rounded-xl border border-sand bg-cream py-2 shadow-lg">
                     {item.children.map((child) => (
                       <NavLink
                         key={child.label}
                         item={child}
-                        className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50"
+                        className="block px-4 py-2 text-sm text-charcoal hover:bg-sand/60 hover:text-pine"
                       />
                     ))}
                   </div>
@@ -97,7 +98,7 @@ export function Header() {
           {giveItem && (
             <Link
               href={giveItem.href}
-              className="hidden rounded-md bg-brand-blue px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand-blue-dark sm:inline-flex"
+              className="hidden rounded-full bg-clay px-6 py-2.5 text-sm font-medium text-cream transition hover:bg-clay/85 sm:inline-flex"
             >
               Give
             </Link>
@@ -106,8 +107,8 @@ export function Header() {
             type="button"
             className={
               solidHeader
-                ? "rounded-lg border border-neutral-300 px-3 py-2 text-sm font-medium text-neutral-700 lg:hidden"
-                : "rounded-md border border-white/40 px-3 py-2 text-sm font-medium text-white lg:hidden"
+                ? "rounded-lg border border-sand px-3 py-2 text-sm font-medium text-charcoal lg:hidden"
+                : "rounded-md border border-cream/40 px-3 py-2 text-sm font-medium text-cream lg:hidden"
             }
             onClick={() => setMobileOpen((v) => !v)}
             aria-expanded={mobileOpen}
@@ -121,10 +122,10 @@ export function Header() {
       {mobileOpen && (
         <div
           className={
-            solidHeader
-              ? "border-t border-neutral-200 bg-white px-4 py-4 lg:hidden"
-              : "border-t border-white/20 bg-black/80 px-4 py-4 backdrop-blur lg:hidden"
-          }
+          solidHeader
+            ? "border-t border-sand bg-cream px-4 py-4 lg:hidden"
+            : "border-t border-cream/20 bg-forest/90 px-4 py-4 backdrop-blur lg:hidden"
+        }
         >
           <nav className="flex flex-col gap-1">
             {navItems.flatMap((item) =>
@@ -149,7 +150,7 @@ export function Header() {
             {giveItem && (
               <Link
                 href={giveItem.href}
-                className="mt-2 rounded-md bg-brand-blue px-3 py-2 text-center text-sm font-medium text-white"
+                className="mt-2 rounded-full bg-clay px-3 py-2 text-center text-sm font-medium text-cream"
                 onClick={() => setMobileOpen(false)}
               >
                 Give
@@ -164,14 +165,14 @@ export function Header() {
 
 function navLinkClass(solidHeader: boolean) {
   return solidHeader
-    ? "rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 transition hover:bg-cream hover:text-black"
-    : "rounded-lg px-3 py-2 text-sm font-medium text-white transition hover:text-white/80";
+    ? "rounded-lg px-3 py-2 text-sm font-medium text-charcoal transition hover:text-pine"
+    : "rounded-lg px-3 py-2 text-sm font-medium text-cream transition hover:text-sage";
 }
 
 function mobileNavLinkClass(solidHeader: boolean) {
   return solidHeader
-    ? "rounded-lg px-3 py-2 text-sm font-medium text-neutral-700"
-    : "rounded-lg px-3 py-2 text-sm font-medium text-white";
+    ? "rounded-lg px-3 py-2 text-sm font-medium text-charcoal"
+    : "rounded-lg px-3 py-2 text-sm font-medium text-cream";
 }
 
 function NavLink({

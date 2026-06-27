@@ -25,7 +25,7 @@ export function ContactForm() {
   return (
     <form
       action={formAction}
-      className="space-y-6 rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm"
+      className="space-y-6 self-start rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm"
     >
       <div>
         <label htmlFor="name" className="mb-2 block text-sm font-medium">

@@ -9,6 +9,8 @@ export const siteConfig = {
   serviceTimes: "Sundays @ 10am & 5pm",
   youtubeChannelId: "UCNDq_fUX-Z1SdPPXtpM1kig",
   youtubeHandle: "https://www.youtube.com/@highlandchurch2926",
+  facebook: "https://www.facebook.com/highlandchurch2926",
+  instagram: "https://www.instagram.com/highland_church_cody",
   spotifyPodcast:
     "https://open.spotify.com/show/1NcuM6Xy65UBNqRVVEYd2Y",
   latestSermonVideoId: "EapWsfVbLvc",
@@ -42,7 +44,7 @@ export const mainNav: NavItem[] = [
       { label: "What we believe", href: "/what-we-believe" },
       { label: "Youth", href: "/youth" },
       { label: "Kids Ministry", href: "/kids-ministry" },
-      { label: "Prayer", href: "/prayer-2" },
+      { label: "Prayer", href: "/prayer" },
       {
         label: "Pastoral care",
         href: churchCenter.pastoralCare,

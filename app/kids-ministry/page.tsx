@@ -162,9 +162,12 @@ export default function KidsMinistryPage() {
 
       <section className="mx-auto max-w-5xl px-4 py-16 md:px-6">
         <h2 className="mb-10 text-center text-3xl font-semibold">FAQ</h2>
-        <div className="grid gap-x-12 gap-y-10 md:grid-cols-2">
+        <div className="columns-1 gap-6 md:columns-2 [&>*]:mb-6 [&>*]:break-inside-avoid">
           {faqs.map((faq) => (
-            <div key={faq.question}>
+            <div
+              key={faq.question}
+              className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm"
+            >
               <h3 className="text-lg font-semibold text-black">
                 {faq.question}
               </h3>
@@ -179,10 +182,12 @@ export default function KidsMinistryPage() {
                 </p>
               )}
               {faq.list && (
-                <ul className="mt-2 space-y-1 text-sm leading-relaxed text-neutral-600">
+                <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-neutral-600">
                   {faq.list.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span aria-hidden>—</span>
+                      <span aria-hidden className="text-neutral-400">
+                        —
+                      </span>
                       <span>{item}</span>
                     </li>
                   ))}

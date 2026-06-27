@@ -1,50 +1,86 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/lib/site";
-
-const headline = [
-  "Love Jesus,",
-  "Live like Jesus,",
-  "Lead others to Jesus.",
-];
+import { Button } from "@/components/ui/Button";
+import { churchCenter, siteConfig } from "@/lib/site";
 
 export function HomeHero() {
   return (
-    <section className="relative bg-white">
-      <div className="relative min-h-[72vh] md:min-h-[78vh]">
+    <section className="relative bg-cream">
+      <div className="relative min-h-[88vh]">
         <Image
           src="/images/highland-church-mountain.jpg"
-          alt=""
+          alt="Mountains near Cody, Wyoming"
           fill
-          className="object-cover object-[48%_87%]"
+          className="object-cover object-[48%_80%]"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/70" />
+        {/* Warm forest-tinted gradient for contrast + earthy mood */}
+        <div className="absolute inset-0 bg-gradient-to-b from-forest/85 via-forest/45 to-forest/80" />
+        <div className="absolute inset-0 bg-charcoal/15" />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-4 pb-36 pt-28 md:px-8 md:pb-44 md:pt-32">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.25rem]">
-              {headline.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </h1>
-            <p className="mt-5 text-base text-white/95 sm:text-lg md:mt-6 md:text-xl">
-              Join us every Sunday @ 10am &amp; 5pm
+        <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-5 pb-44 pt-32 md:px-8 md:pb-52">
+          <div className="max-w-3xl">
+            <p className="mb-6 flex items-center gap-3 text-sm font-medium uppercase tracking-[0.25em] text-sage">
+              <span className="h-px w-10 bg-sage/70" />
+              A church in Cody, Wyoming
             </p>
+            <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-cream sm:text-6xl md:text-7xl lg:text-[5rem]">
+              Love Jesus,
+              <br />
+              Live like Jesus,
+              <br />
+              <span className="italic text-sage">Lead others</span> to Jesus.
+            </h1>
+            <p className="mt-7 max-w-xl text-lg text-cream/85 md:text-xl">
+              Join us every Sunday at 10am &amp; 5pm — with a shared meal after
+              each service. Come as you are.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Button href="/contact" variant="clay">
+                Plan Your Visit
+              </Button>
+              <a
+                href={churchCenter.connect}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-cream/40 px-7 py-3 text-sm font-medium tracking-wide text-cream transition hover:bg-cream hover:text-forest"
+              >
+                New Here? Connect
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="relative z-20 mx-auto max-w-6xl px-4 md:px-8">
-        <div className="-mt-28 overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.12)] md:-mt-36">
-          <div className="grid items-center gap-6 p-6 md:grid-cols-[1fr_1.4fr] md:gap-8 md:p-8 lg:p-10">
-            <h2 className="text-2xl font-bold leading-tight text-black md:text-3xl lg:text-4xl">
-              Watch our latest sermon
-            </h2>
-            <div className="overflow-hidden rounded-xl bg-neutral-100">
+      {/* Overlapping latest sermon card */}
+      <div className="relative z-20 mx-auto max-w-6xl px-5 md:px-8">
+        <div className="-mt-32 overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_rgba(40,48,31,0.18)] md:-mt-40">
+          <div className="grid items-center gap-6 p-6 md:grid-cols-[1fr_1.4fr] md:gap-10 md:p-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-clay">
+                Latest Message
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-forest lg:text-4xl">
+                Watch our latest sermon
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-charcoal/70">
+                Catch up on the most recent teaching from Highland Church, or
+                browse the full archive of messages.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button href="/messages">All Messages</Button>
+                <Link
+                  href={siteConfig.spotifyPodcast}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-pine/30 px-6 py-3 text-sm font-medium text-pine transition hover:bg-pine hover:text-cream"
+                >
+                  High Pursuit Podcast
+                </Link>
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-2xl bg-neutral-100">
               <div className="relative aspect-video w-full">
                 <iframe
                   src={`https://www.youtube.com/embed/${siteConfig.latestSermonVideoId}`}
@@ -56,14 +92,6 @@ export function HomeHero() {
               </div>
             </div>
           </div>
-          <Link
-            href={siteConfig.spotifyPodcast}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block bg-brand-blue px-6 py-4 text-center text-sm font-medium text-white transition hover:bg-brand-blue-dark sm:text-base"
-          >
-            Check Out Our High Pursuit Podcast — Click Here
-          </Link>
         </div>
       </div>
 

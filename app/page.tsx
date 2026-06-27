@@ -11,19 +11,57 @@ export default function HomePage() {
     <>
       <HomeHero />
 
-      <section className="bg-white px-4 py-16 md:px-6 md:py-20">
+      {/* Welcome / intro band */}
+      <section className="bg-cream px-5 py-20 md:px-8 md:py-28">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-clay">
+              Welcome Home
+            </p>
+            <h2 className="font-display text-3xl font-semibold leading-tight text-forest md:text-4xl lg:text-5xl">
+              A family learning to love Jesus together
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-charcoal/75">
+              At Highland Church, our pastors are called and equipped to guide,
+              teach, care for, and pray over those that call Highland their home.
+              Our team is excited to serve the needs of you and your family and
+              those connected to you.
+            </p>
+            <div className="mt-8">
+              <Button href="/our-team">Meet Our Team</Button>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+              <Image
+                src="/images/medicine-bow-mountains-and-a-lake-landscape-15088317-683x1024.jpg"
+                alt="Wyoming landscape"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 50vw, 300px"
+              />
+            </div>
+            <div className="relative mt-8 aspect-[3/4] overflow-hidden rounded-2xl">
+              <Image
+                src="/images/prayer/prayer-worship.jpg"
+                alt="Hands lifted in worship"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 50vw, 300px"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Care / services */}
+      <section className="bg-sand/50 px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Community"
-            title="We Love Serving Our Local Community"
+            eyebrow="How We Serve"
+            title="We love serving our local community"
           />
-          <p className="mx-auto mt-6 max-w-3xl text-center text-neutral-600">
-            At Highland Church, our pastors are called and equipped to guide,
-            teach, care for and pray over those that call Highland their home!
-            Our team is excited to serve the needs of you and your family and
-            those connected to you.
-          </p>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {homeServices.map((service) => (
               <ServiceCard key={service.title} {...service} />
             ))}
@@ -31,53 +69,84 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-4 py-20 md:px-6">
+      {/* What we believe — dark forest band */}
+      <section className="relative overflow-hidden px-5 py-24 md:px-8 md:py-32">
         <Image
-          src="/images/medicine-bow-mountains-and-a-lake-landscape-15088317-683x1024.jpg"
+          src="/images/highland-church-mountain.jpg"
           alt=""
           fill
-          className="object-cover"
+          className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 mx-auto max-w-3xl text-center text-white">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cream/80">
+        <div className="absolute inset-0 bg-forest/90" />
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-sage">
             All About Jesus
           </p>
-          <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+          <h2 className="font-display text-3xl font-semibold text-cream md:text-4xl lg:text-5xl">
             What We Believe
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-white/90">
+          <p className="mt-6 text-lg leading-relaxed text-cream/80">
             Our beliefs are at the heart of what makes us who we are. These
             aren&apos;t just concepts or ideas; these beliefs express what we
             believe to be true and real about God, the world He made, and where
             we fit in all of that. They help us live the way God intended,
             bringing glory to his Name.
           </p>
-          <div className="mt-8">
-            <Button href="/what-we-believe" className="bg-cream text-black hover:bg-white">
-              Learn more
+          <div className="mt-9">
+            <Button href="/what-we-believe" variant="light">
+              Explore Our Beliefs
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="bg-cream px-4 py-16 text-center md:px-6 md:py-20">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-600">
-          {siteConfig.serviceTimes}
-        </p>
-        <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
-          {siteConfig.address}, Cody, Wyoming
-        </h2>
-        <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl shadow-lg">
-          <iframe
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBAM2o7PiQqwk15LC1XRH2e_KJ-jUa7KYk&zoom=16&maptype=roadmap&q=2926+Big+Horn+Avenue%2C+Cody"
-            title="Highland Church location"
-            className="aspect-video w-full border-0"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+      {/* Visit / location */}
+      <section className="bg-cream px-5 py-20 md:px-8 md:py-28">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-clay">
+              Plan Your Visit
+            </p>
+            <h2 className="font-display text-3xl font-semibold leading-tight text-forest md:text-4xl lg:text-5xl">
+              We&apos;d love to see you Sunday
+            </h2>
+            <div className="mt-8 space-y-6 text-charcoal/80">
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-pine">
+                  Gather With Us
+                </h3>
+                <p className="mt-1 text-lg">{siteConfig.serviceTimes}</p>
+                <p className="text-sm text-charcoal/60">
+                  Sunday meals always served after service
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-pine">
+                  Find Us
+                </h3>
+                <p className="mt-1 text-lg">
+                  {siteConfig.address}, {siteConfig.city}
+                </p>
+              </div>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Button href="/contact">Get in Touch</Button>
+              <Button href="/upcoming-events" variant="outline">
+                Upcoming Events
+              </Button>
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(40,48,31,0.12)]">
+            <iframe
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBAM2o7PiQqwk15LC1XRH2e_KJ-jUa7KYk&zoom=16&maptype=roadmap&q=2926+Big+Horn+Avenue%2C+Cody"
+              title="Highland Church location"
+              className="aspect-square w-full border-0 md:aspect-[4/5]"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </section>
     </>

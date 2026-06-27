@@ -15,16 +15,16 @@ export function SectionHeading({
     <div className={`text-center ${className}`}>
       {eyebrow && (
         <p
-          className={`mb-3 text-sm font-semibold uppercase tracking-[0.2em] ${
-            light ? "text-cream/80" : "text-neutral-500"
+          className={`mb-4 text-xs font-semibold uppercase tracking-[0.25em] ${
+            light ? "text-sage" : "text-clay"
           }`}
         >
           {eyebrow}
         </p>
       )}
       <h2
-        className={`text-3xl font-semibold tracking-tight md:text-4xl ${
-          light ? "text-white" : "text-black"
+        className={`font-display text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl ${
+          light ? "text-cream" : "text-forest"
         }`}
       >
         {title}

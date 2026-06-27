@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 import { beliefs } from "@/lib/content";
+import { churchCenter } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "What we believe",
@@ -9,40 +11,87 @@ export const metadata: Metadata = {
 export default function WhatWeBelievePage() {
   return (
     <>
-      <section className="relative flex min-h-[50vh] items-end overflow-hidden">
+      {/* Hero */}
+      <section className="relative flex min-h-[60vh] items-end overflow-hidden">
         <Image
-          src="/images/medicine-bow-mountains-and-a-lake-landscape-15088317-683x1024.jpg"
-          alt=""
+          src="/images/highland-church-mountain.jpg"
+          alt="Mountains near Cody, Wyoming"
           fill
-          className="object-cover"
+          className="object-cover object-[50%_60%]"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-4xl px-4 py-16 md:px-6">
-          <h1 className="text-4xl font-semibold text-white md:text-5xl">
+        <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/55 to-forest/30" />
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-24 md:px-8 md:pb-20">
+          <p className="mb-5 flex items-center gap-3 text-sm font-medium uppercase tracking-[0.25em] text-sage">
+            <span className="h-px w-10 bg-sage/70" />
+            One Faith · One Savior · One Hope
+          </p>
+          <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-cream sm:text-6xl md:text-7xl">
             What we believe
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/90">
-            Our beliefs are at the heart of what makes us who we are. These
-            aren&apos;t just concepts or ideas; these beliefs express what we
-            believe to be true and real about God, the world He made, and where
-            we fit in all of that.
+          <p className="mt-6 max-w-2xl text-lg text-cream/85 md:text-xl">
+            These aren&apos;t just concepts or ideas — they express what we hold
+            to be true and real about God, the world He made, and where we fit in
+            all of it.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 py-16 md:px-6">
-        <p className="mb-12 text-center text-xl font-medium text-neutral-700">
-          One Faith, One Savior, One Hope
-        </p>
-        <div className="space-y-10">
-          {beliefs.map((belief) => (
-            <article key={belief.title}>
-              <h2 className="text-xl font-semibold">{belief.title}</h2>
-              <p className="mt-3 leading-relaxed text-neutral-600">{belief.text}</p>
-            </article>
-          ))}
+      {/* Beliefs grid */}
+      <section className="bg-cream px-5 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-clay">
+              Our Statement of Faith
+            </p>
+            <h2 className="font-display text-3xl font-semibold leading-tight text-forest md:text-4xl">
+              The convictions at the heart of who we are
+            </h2>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {beliefs.map((belief, index) => (
+              <article
+                key={belief.title}
+                className="group rounded-3xl border border-sand bg-white p-8 shadow-sm transition hover:border-clay/40 hover:shadow-md"
+              >
+                <div className="flex items-baseline gap-4">
+                  <span className="font-display text-2xl font-semibold text-clay/70">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-2xl font-semibold text-forest">
+                    {belief.title}
+                  </h3>
+                </div>
+                <p className="mt-4 leading-relaxed text-charcoal/75">
+                  {belief.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Closing CTA */}
+      <section className="bg-forest px-5 py-20 text-center md:px-8 md:py-24">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="font-display text-3xl font-semibold text-cream md:text-4xl">
+            Have questions about faith?
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-cream/80">
+            We&apos;d love to talk. Whether you&apos;re exploring Christianity for
+            the first time or have been walking with Jesus for years, there&apos;s
+            a place for you here.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button href={churchCenter.connect} external variant="clay">
+              Connect With Us
+            </Button>
+            <Button href="/contact" variant="light">
+              Get in Touch
+            </Button>
+          </div>
         </div>
       </section>
     </>
